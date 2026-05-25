@@ -8,10 +8,11 @@ body {
 	margin: 0;
 	font-family: "Inter", sans-serif;
 	font-optical-sizing: auto;
-	font-weight: 400;
+	font-weight: 200;
 	font-style: normal;
 	font-variation-settings: "slnt" 0;
-}
+	color: rgb(79, 104, 21);
+	
 
 iframe{
 	width: 100%;
@@ -21,18 +22,20 @@ iframe{
 
 p {
 	margin: 0 0 1em 0;
-	max-width: 30em;
+	max-width: 40em;
 	color: rgb(79, 104, 21);
+	
 }
 
 h1 {
 	margin: 0;
-	font-size: 3em;
+	font-size: 6em;
 	color: rgb(79, 104, 21);
 }
 
 h4 {
 	margin: 0;
+	font-size: 2em;
 }
 
 iframe {
@@ -51,7 +54,7 @@ section {
 }
 
 .filetto {
-	border-top: solid 1px rgb(46, 185, 41);
+	border-top: solid 4px rgb(79, 104, 21);
 }
 
 .titolo-sezione {
@@ -69,7 +72,7 @@ ul {
 
 /* -- breakpoint: schermi piccoli, larghezza massima 500 pixel -- */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
 	header,
 	section {
 		grid-template-columns: 1fr;

@@ -10,14 +10,27 @@ var rules = {
   "P": "--OA++++MA[+PA++++NA]--NA"
 };
 
+var container;
+
 function setup() {
-  createCanvas(600, 600);
+  container = createDiv();
+  container.style('position', 'relative');
+  container.style('width', '400px');
+  container.style('height', '400px');
+  container.style('border', '2px solid rgb(79, 104, 21)');
+  container.style('border-radius', '12px');
+  container.style('overflow', 'hidden');
+
+  var canvas = createCanvas(400, 400);
+  canvas.parent(container);
   angleMode(DEGREES);
   
   side = 20;
 
   var gui = createDiv();
-  gui.style('margin-bottom', '10px');
+  gui.style('margin-top', '20px');
+  gui.style('font-family', 'sans-serif');
+  gui.style('color', 'rgb(79, 104, 21)');
 
   var btnGen = createButton("genera");
   btnGen.parent(gui);
@@ -30,16 +43,61 @@ function setup() {
   btnReset.mousePressed(resetCanvas);
   styleButton(btnReset);
   
+  var rulesContainer = createDiv();
+  rulesContainer.parent(gui);
+  rulesContainer.style('margin-top', '15px');
+  rulesContainer.style('display', 'flex');
+  rulesContainer.style('flex-direction', 'column');
+  rulesContainer.style('gap', '8px');
+
+  createRuleInput("M → ", rules["M"], rulesContainer, function() { rules["M"] = this.value(); });
+  createRuleInput("N → ", rules["N"], rulesContainer, function() { rules["N"] = this.value(); });
+  createRuleInput("O → ", rules["O"], rulesContainer, function() { rules["O"] = this.value(); });
+  createRuleInput("P → ", rules["P"], rulesContainer, function() { rules["P"] = this.value(); });
+
   disegnaPenrose();
 }
 
+function createRuleInput(labelText, defaultValue, parentContainer, inputEvent) {
+  var row = createDiv();
+  row.parent(parentContainer);
+  row.style('display', 'flex');
+  row.style('align-items', 'center');
+  row.style('gap', '8px');
+
+  var label = createSpan(labelText);
+  label.parent(row);
+  label.style('font-weight', 'bold');
+  label.style('font-size', '14px');
+  label.style('min-width', '35px'); // Ridotto per adattarsi alla sola lettera con freccia
+  
+  var inp = createInput(defaultValue);
+  inp.parent(row);
+  inp.input(inputEvent);
+  inp.input(function() {
+    this.style('width', Math.max(100, this.value().length * 8) + 'px');
+  });
+  
+  inp.style('padding', '6px');
+  inp.style('border', '1px solid rgb(79, 104, 21)');
+  inp.style('border-radius', '6px');
+  inp.style('background-color', 'rgb(240, 230, 218)');
+  inp.style('color', 'rgb(79, 104, 21)');
+  inp.style('font-family', 'monospace');
+  inp.style('font-size', '13px');
+  
+  inp.style('width', Math.max(100, defaultValue.length * 8) + 'px');
+}
+
 function styleButton(btn) {
-  btn.style('padding', '10px 20px');
-  btn.style('font-size', '18px');
+  btn.style('padding', '8px 16px');
+  btn.style('font-size', '16px');
   btn.style('cursor', 'pointer');
-  btn.style('background-color', '#f8f8f8');
-  btn.style('border', '1px solid #333');
-  btn.style('border-radius', '4px');
+  btn.style('background-color', 'rgb(240, 230, 218)');
+  btn.style('color', 'rgb(79, 104, 21)');
+  btn.style('border', '1.5px solid rgb(79, 104, 21)');
+  btn.style('border-radius', '10px');
+  btn.style('text-transform', 'lowercase');
 }
 
 function resetCanvas() {
@@ -65,8 +123,8 @@ function generate() {
 }
 
 function disegnaPenrose() {
-  background(255);
-  stroke(0);
+  background(240, 230, 218);
+  stroke(79, 104, 21);
   strokeWeight(1);
   noFill();
 
@@ -101,11 +159,24 @@ function disegnaPenrose() {
   var disegnoWidth = maxX - minX;
   var disegnoHeight = maxY - minY;
 
-  var xInizio = (width - disegnoWidth) / 2 - minX;
-  var yInizio = (height - disegnoHeight) / 2 - minY;
+  if (disegnoWidth === 0) disegnoWidth = 1;
+  if (disegnoHeight === 0) disegnoHeight = 1;
+
+  var margine = 20;
+  var maxDisponibile = width - (margine * 2);
+  
+  var scalaX = maxDisponibile / disegnoWidth;
+  var scalaY = maxDisponibile / disegnoHeight;
+  var fattoreScala = min(scalaX, scalaY);
+
+  if (fattoreScala > 1) fattoreScala = 1;
+
+  var xInizio = (width - (disegnoWidth * fattoreScala)) / 2 - (minX * fattoreScala);
+  var yInizio = (height - (disegnoHeight * fattoreScala)) / 2 - (minY * fattoreScala);
 
   push();
   translate(xInizio, yInizio); 
+  scale(fattoreScala);
   
   for (var i = 0; i < sentence.length; i++) {
     var current = sentence.charAt(i);
