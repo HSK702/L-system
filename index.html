@@ -26,7 +26,7 @@
 		<!-- --------------------------------------------------------------------- -->
 
 		<section class="filetto">
-			<h4 class="titolo-sezione">Sezione 1: <br>Introduzione</h4>
+			<h4 class="titolo-sezione">Introduzione</h4>
 			<div class="contenuto-sezione">
 				<p>
 	               L-system, o sistema di Lindenmayer, è un modello matematico creato nel 1968 dal biologo ungherese Aristid Lindenmayer 
@@ -41,14 +41,14 @@
 
 
 				</p>
-				<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/funzioni_trigonometriche/"></iframe>
+				
 			</div>
 		</section>
 
 		<!-- --------------------------------------------------------------------- -->
 
 		<section class="filetto">
-			<h4 class="titolo-sezione">Sezione 2:<br>Funzionamento degli L-system</h4>
+			<h4 class="titolo-sezione">Funzionamento <br> degli L-system</h4>
 			<div class="contenuto-sezione">
 				<p>
 				 Per disegnare qualcosa con un L-system bisogna prima decidere cosa rappresentano i simboli. 
@@ -95,111 +95,231 @@
 				 <br><br>
                  #1 = F+F-G -GG
 				 <br><br>
-                 
-
 
 				</p>
 				<iframe scrolling=yes frameborder=0 src="assets\sketches\ESEMPIO1\index.html"></iframe>
-				<iframe scrolling=no frameborder=0 height=500 src="assets\sketches\ESEMPIO2\FG.js"></iframe>
+				
+				<p>
+					Ripetendo questo processo si generano sequenze sempre più complesse
+					che possono poi essere trasformate in disegni geometrici.
+				</p>
 			</div>
 		</section>
 
 		<!-- --------------------------------------------------------------------- -->
 
 		<section class="filetto">
-			<h4 class="titolo-sezione">Sezione 3:<br>Linea tratteggiata</h4>
+			<h4 class="titolo-sezione">La curva del drago</h4>
 			<div class="contenuto-sezione">
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Maecenas quis ante sit amet neque cursus hendrerit ac sit amet nisl.
-					In cursus aliquam odio eu eleifend.
-					Ut sed auctor magna.
-					In hac habitasse platea dictumst.
-					Aliquam aliquam nisl mi.
-					Phasellus et orci elit.
-					Maecenas vehicula elit et lacus accumsan consequat.
-					Nam consectetur lacus ante.
-					Vestibulum et massa dolor.
-					Aenean condimentum blandit eros non dapibus.
-					Maecenas quam nulla, porta eu nibh in, cursus iaculis mauris.
-					Phasellus sit amet nulla eu tellus dictum cursus.
-					Sed aliquet, ipsum sit amet tempus semper, augue velit consequat mi, et gravida sem purus a quam.
+					Uno degli esempi più conosciuti creati con gli L-system è la curva del drago.
+                    L’idea di base è sostituire una linea con due segmenti che formano un angolo retto.
+					<br><br>
+                    Possiamo partire da una regola semplice:
+					<br><br>
+					   F = F+F
+					   <br><br>
+                       Partendo dall’assioma F otteniamo:
+					   <br><br>
+                       #0 = F
+					   <br><br>
+                       #1 = F+F
+					   <br><br>
+                       #2 = F+F+F+F
+					   <br><br>
+                       #3 = F+F+F+F+F+F+F+F
+					   <br><br>
+					   Con questa regola, però, dopo alcune iterazioni si ottengono soprattutto forme quadrate. Per creare una figura più interessante bisogna distinguere i diversi tipi di svolta.
+                       Useremo:
+					   <br><br>
+                       + per girare a destra
+					   <br>
+                       - per girare a sinistra
+					   <br><br>
+                       Introduciamo quindi due simboli:
+					   <br><br>
+                       F quando tra due segmenti c’è una svolta a sinistra
+					   <br>
+                       G quando invece c’è una svolta a destra
+					   <br><br>
+                       Le regole diventano:<br>
+                       F = F-G<br>
+                       G = F+G<br>
+					<b><b>
+
 				</p>
-				<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/linea_tratteggiata/"></iframe>
+				<iframe scrolling=yes frameborder=0 height=750 src="assets\sketches\ESEMPIO2\index.html"></iframe>
+					<p>
+                     Continuando a ripetere queste regole si ottiene la curva del drago, 
+					 una figura frattale molto complessa creata partendo da istruzioni semplici.
+                     <br><br>
+					 Con lo stesso principio si possono creare anche altre figure conosciute come il triangolo di Sierpinski,
+                     <br>
+					 la curva di Hilbert o la tassellatura di Penrose.
+					 <br>
+					</p>
+				 
 			</div>
 		</section>
 
 		<!-- --------------------------------------------------------------------- -->
 
 		<section class="filetto">
-			<h4 class="titolo-sezione">Sezione 4:<br>Spirograph</h4>
+			<h4 class="titolo-sezione">Albero Frattale</h4>
 			<div class="contenuto-sezione">
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Maecenas quis ante sit amet neque cursus hendrerit ac sit amet nisl.
-					In cursus aliquam odio eu eleifend.
-					Ut sed auctor magna.
-					In hac habitasse platea dictumst.
-					Aliquam aliquam nisl mi.
-					Phasellus et orci elit.
-					Maecenas vehicula elit et lacus accumsan consequat.
-					Nam consectetur lacus ante.
-					Vestibulum et massa dolor.
-					Aenean condimentum blandit eros non dapibus.
-					Maecenas quam nulla, porta eu nibh in, cursus iaculis mauris.
-					Phasellus sit amet nulla eu tellus dictum cursus.
-					Sed aliquet, ipsum sit amet tempus semper, augue velit consequat mi, et gravida sem purus a quam.
-				</p>
-				<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/spirograph/"></iframe>
+					Gli L-system possono essere usati anche per simulare la crescita delle piante. Infatti si possono creare foglie, cespugli e alberi sia in 2D che in 3D.
+                    Per fare questo esistono altri due simboli molto utili: le parentesi quadrate
+                     <br><br>
+                    [ serve per salvare la posizione e la direzione corrente
+                     <br><br>
+                    ] serve per tornare all’ultima posizione salvata
+                    <br><br>
+                    Questo permette di creare facilmente rami e ramificazioni.
+                    <br><br>
+					Ad esempio:
+					<br><br>
+					F[+F][-F]F
+					<br><br>
+                    senza parentesi il disegno continuerebbe invece su una sola linea:
+					<br><br>
+                    F+F++++++F++++F
+					<br><br>
+					Per creare una struttura simile a un albero possiamo partire da:
+                    assioma: F
+                    angolo: 22.5°
+                    e usare questa regola:
+                    F = F[-F]F[-F]+FF
+                    
 
+				</p>
+				<iframe scrolling=yes frameborder=0 height=500 src="assets\sketches\ESEMPIO3\index.html"></iframe>
+                <p>
+					Dopo alcune iterazioni compare però un problema: alcune linee continuano a crescere formando una specie di spirale.<br>
+                    Per evitare questo effetto introduciamo una nuova variabile:
+					<br><br>
+                    F rappresenta i rami che continuano a dividersi
+					<br>
+                    G rappresenta il tronco
+					<br><br>
+                    La regola diventa quindi:
+					<br><br>
+                    F = G[-F]G[-F]+GF
+					<br><br>
+                    In questo modo il risultato è più stabile e ricorda maggiormente un albero.<br>
+                    Per renderlo ancora più naturale si possono sostituire le G con GG, così il tronco si allunga a ogni iterazione:
+					<br><br>
+                    F = GG[-F]GG[-F]+GF
+					<br><br>
+
+				</p>
+				<iframe scrolling=yes frameborder=0 height=500 src="assets\sketches\ESEMPIO4\index.html"></iframe>
 			</div>
 		</section>
 
 <!-- --------------------------------------------------------------------- -->
 
 		<section class="filetto">
-			<h4 class="titolo-sezione">Sezione 5:<br> Radianti (GIF)</h4>
+			<h4 class="titolo-sezione">Il Triangolo Sierpinski</h4>
 			<div class="contenuto-sezione">
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Maecenas quis ante sit amet neque cursus hendrerit ac sit amet nisl.
-					In cursus aliquam odio eu eleifend.
-					Ut sed auctor magna.
-					In hac habitasse platea dictumst.
-					Aliquam aliquam nisl mi.
-					Phasellus et orci elit.
-					Maecenas vehicula elit et lacus accumsan consequat.
-					Nam consectetur lacus ante.
-					Vestibulum et massa dolor.
-					Aenean condimentum blandit eros non dapibus.
-					Maecenas quam nulla, porta eu nibh in, cursus iaculis mauris.
-					Phasellus sit amet nulla eu tellus dictum cursus.
-					Sed aliquet, ipsum sit amet tempus semper, augue velit consequat mi, et gravida sem purus a quam.
+					Un altro frattale classico che può essere generato facilmente attraverso un L-system è il Triangolo di Sierpinski. <br>
+					Sebbene esistano diversi modi per disegnarlo (anche attraverso la scomposizione geometrica diretta), 
+					l'approccio con i sistemi di Lindenmayer si basa sulla creazione di una linea continua che si ripiega su se stessa 
+					fino a formare la celebre figura geometrica a triangoli vuoti.
+					<br>
+                    Per riprodurlo, definiamo i seguenti elementi:
+					<br><br>
+                    Angolo di rotazione: 60°
+					<br><br>
+                    Assioma (stringa iniziale): F
+					<br><br>
+                    Regole di sostituzione:
+					<br><br>
+                    F= G-F-F
+					<br>
+                    G= F+G+F
+                    <br><br>
 				</p>
-				<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Circle_radians.gif">
+				<iframe scrolling=yes frameborder=0 height=500 src="assets\sketches\ESEMPIO5\index.html"></iframe>
 			</div>
 		</section>
+<!-- --------------------------------------------------------------------- -->
 
+		<section class="filetto">
+			<h4 class="titolo-sezione">Curva di Hilbert</h4>
+			<div class="contenuto-sezione">
+				<p>
+				    La Curva di Hilbert è una curva frattale "salva-spazio" (space-filling curve): una linea continua che allontanandosi verso l'infinito 
+					con l'aumentare delle iterazioni, riesce a riempire completamente una superficie bidimensionale senza mai incrociare se stessa.<br>
+                    Per generarla con un L-system, introduciamo due simboli di controllo, A e B, che sono simboli "fantasma", 
+					ovvero non si vede nulla a schermo quando vengono letti, ma servono a decidere 
+					dove inserire i prossimi segmenti F nelle iterazioni successive.<br>
+                    <br><br>
+					Angolo di rotazione: 90°
+					<br><br>
+                    Assioma: A
+					<br><br>
+                    Regole di sostituzione:<br><br>
+                    A = +BF-AFA-FB+
+					<br>
+                    B = -AF+BFB+FA-
+					<br>
+
+				</p>
+				<iframe scrolling=yes frameborder=0 height=500 src="assets\sketches\ESEMPIO6\index.html"></iframe>
+			</div>
+		</section>
+<!-- --------------------------------------------------------------------- -->
+
+		<section class="filetto">
+			<h4 class="titolo-sezione">Tassellatura di Penrose</h4>
+			<div class="contenuto-sezione">
+				<p>
+				 La Tassellatura di Penrose rappresenta uno degli esempi più complessi di applicazione degli
+				 L-system. Creata da Roger Penrose, matematico e fisico britannico, è una struttura geometrica 
+				 in grado di ricoprire una superficie infinita creando motivi simmetrici sempre diversi,
+				 in natura questo fenomeno si ritrova nei quasicristalli.
+				 <br>
+                 Per riprodurre fedelmente questo nel codice, l'L-system non si limita a un semplice comando
+				 di avanzamento, ma utilizza un insieme di simboli interconnessi che agiscono contemporaneamente
+				 sia come variabili di calcolo sia come vettori di spostamento. 
+				 <br>
+                 Introduciamo altri simboli: M, N, O, P: servono da vettori di movimento, 
+				 ognuna di queste lettere dice alla tartaruga di tracciare una linea in avanti 
+				 di lunghezza side (lunghezza in pixel di ogni segmento) e spostare la propria posizione.
+				 <br><br>
+				 Angolo di rotazione: 36° (valore ottenuto dividendo il cerchio in 10 parti, strettamente legato alle proporzioni della sezione aurea).
+				 <br><br>
+                 Assioma:[N]++[N]++[N]++[N]++[N]
+				 <br><br>
+                 Regole di Sostituzione<br><br>
+                 M= OA++PA----NA[-OA----MA]++
+				 <br><br>
+                 N= +OA--PA[---MA--NA]+
+				 <br><br>
+                 O= -MA++NA[+++OA++PA]-
+				 <br><br>
+                 P= --OA++++MA[+PA++++NA]--NA
+				 <br><br>
+
+				</p>
+				<iframe scrolling=yes frameborder=0 height=500 src="assets\sketches\ESEMPIO7\index.html"></iframe>
+			</div>
+		</section>
 <!-- --------------------------------------------------------------------- -->
 
 		<section class="filetto">
 			<h4 class="titolo-sezione">Bibliografia</h4>
 			<div class="contenuto-sezione">
 				<ul>
-					<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-					<li>Maecenas quis ante sit amet neque cursus hendrerit ac sit amet nisl</li>
-					<li>In cursus aliquam odio eu eleifend</li>
-					<li>Ut sed auctor magna</li>
-					<li>In hac habitasse platea dictumst</li>
-					<li>Aliquam aliquam nisl mi</li>
-					<li>Phasellus et orci elit</li>
-					<li>Maecenas vehicula elit et lacus accumsan consequat</li>
-					<li>Nam consectetur lacus ante</li>
-					<li>Vestibulum et massa dolor</li>
-					<li>Aenean condimentum blandit eros non dapibus</li>
-					<li>Maecenas quam nulla, porta eu nibh in, cursus iaculis mauris</li>
-					<li>Phasellus sit amet nulla eu tellus dictum cursus</li>
-					<li>Sed aliquet, ipsum sit amet tempus semper, augue velit consequat mi, et gravida sem purus a quam</li>
+					<li>https://youtu.be/J0LyZSgVKVc?is=VahZS6_QezvZUJMc</li>
+					<li>http://algorithmicbotany.org/papers/#abop</li>
+					<li>​https://mathworld.wolfram.com/L-System.html</li>
+					<li>​https://www.geeksforgeeks.org/lindenmayer-system-l-system/</li>
+					<li>​https://thecodingtrain.com/challenges/16-l-system-fractal-trees</li>
+					<li>https://en.wikipedia.org/wiki/L-system</li>
+					<li>https://www.cgjennings.ca/articles/l-systems/</li>
 				</ul>
 
 			</div>

@@ -3,7 +3,7 @@
 }
 
 body {
-	background-color: rgb(240, 240, 240); /* white, #FFFFFF */
+	background-color: rgb(240, 230, 218); /* white, #FFFFFF */
 	padding: 2em;
 	margin: 0;
 	font-family: "Inter", sans-serif;
@@ -15,18 +15,20 @@ body {
 
 iframe{
 	width: 100%;
-	height: 30em;
+	height: 45em;
 	
 }
 
 p {
 	margin: 0 0 1em 0;
 	max-width: 30em;
+	color: rgb(79, 104, 21);
 }
 
 h1 {
 	margin: 0;
 	font-size: 3em;
+	color: rgb(79, 104, 21);
 }
 
 h4 {
@@ -49,7 +51,7 @@ section {
 }
 
 .filetto {
-	border-top: solid 1px black;
+	border-top: solid 1px rgb(46, 185, 41);
 }
 
 .titolo-sezione {
