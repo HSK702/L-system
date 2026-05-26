@@ -14,14 +14,15 @@
 	<link rel="stylesheet"   href="./assets/css/main.css">
 </head>
 <body>
-   <a href="#introduzione">Introduzione</a><br>
-   <a href="#funzionamento">Funzionamento</a><br>
-   <a href="#curva-drago">Curva del drago</a><br>
-   <a href="#albero-frattale">Albero frattale</a><br>
-   <a href="#triangolo-sierpinski">Triangolo di Sierpinski</a><br>
-   <a href="#curva-hilbert">Curva di Hilbert</a><br>
-   <a href="#penrose">Tassellatura di Penrose</a><br>
-
+	<h2>
+         <a href="#introduzione" style="color: rgb(79, 104, 21);">Introduzione</a><br>
+       	 <a href="#funzionamento" style="color: rgb(79, 104, 21);">Funzionamento</a><br>
+         <a href="#curva-drago" style="color: rgb(79, 104, 21);">Curva del drago</a><br>
+         <a href="#albero-frattale" style="color: rgb(79, 104, 21);">Albero frattale</a><br>
+       	 <a href="#triangolo-sierpinski" style="color: rgb(79, 104, 21);">Triangolo di Sierpinski</a><br>
+       	 <a href="#curva-hilbert" style="color: rgb(79, 104, 21);">Curva di Hilbert</a><br>
+       	 <a href="#penrose" style="color: rgb(79, 104, 21);">Tassellatura di Penrose</a><br>
+    </h2>
 	<main class="contenitore">
 
 		<!------------------------------------------------------------------------->
@@ -68,42 +69,46 @@
                  <br><br>
                  Un esempio comune di simboli è il seguente :
                  <br>
-                 <p class="testo-grassetto"> F e G servono per disegnare in avanti
-				 <br>
-                 + indica una rotazione verso destra
-				 <br>
-                 - indica una rotazione verso sinistra</p>
+                 <div class="formula"> F e G servono per disegnare in avanti
+				    <br>
+                    + indica una rotazione verso destra
+				    <br>
+                    - indica una rotazione verso sinistra 
+				 </div>
 				 <br>
 				 Per far funzionare il sistema bisogna anche scegliere un angolo di rotazione. 
 				 In questo caso utilizziamo 60°.
                  <br><br>
                  Alcuni esempi:<br>
-                 FF =  disegna due linee consecutive
-				 <br>
-                 F+F = disegna una linea, gira a destra e disegna di nuovo
-				 <br>
-                 F-F = disegna una linea, gira a sinistra e continua
-                 <br><br>
-
+                 <div class="formula">FF =  disegna due linee consecutive
+				   <br>
+                   F+F = disegna una linea, gira a destra e disegna di nuovo
+				   <br>
+                   F-F = disegna una linea, gira a sinistra e continua
+				 </div>
+                 <br>
                  Con pochi simboli si possono creare molte forme diverse. Però, per ottenere disegni più complessi, 
 				 si usano delle regole che trasformano i simboli iniziali in sequenze sempre più lunghe.
 				 <br><br>
                  Per esempio:
                  <br>
-				 F = F+F-G
+				 <div class="formula">F = F+F-G
 				 <br>
                  G = -GG
 				 <br><br>
+				</div>
                  Ogni volta che viene applicata una regola, tutti i simboli della stringa vengono sostituiti contemporaneamente.
                  La stringa iniziale si chiama assioma ed è il punto di partenza del sistema.
 				 <br><br>
                  Esempio:
                  <br>
-				 #0 = FG
-				 <br><br>
-                 Applicando le regole ai simboli dell’assioma otteniamo la prima iterazione:
-				 <br>
-                 #1 = F+F-G -GG
+				   <div class="formula">
+				   #0 = FG
+				   <br><br> </div>
+                   Applicando le regole ai simboli dell’assioma otteniamo la prima iterazione:
+				   <br><div class="formula">
+                   #1 = F+F-G -GG
+				  </div>
 				 <br><br>
 
 				</p>
@@ -127,11 +132,11 @@
                     L’idea di base è sostituire una linea con due segmenti che formano un angolo retto.
 					<br><br>
                     Possiamo partire da una regola semplice:
-					<br>
+					<br><div class="formula">
 					   F = F+F
-					   <br><br>
+					   <br><br></div>
                        Partendo dall’assioma F otteniamo:
-					   <br>
+					   <br><div class="formula">
                        #0 = F
 					   <br>
                        #1 = F+F
@@ -139,24 +144,24 @@
                        #2 = F+F+F+F
 					   <br>
                        #3 = F+F+F+F+F+F+F+F
-					   <br><br>
+					   <br><br></div>
 					   Con questa regola, però, dopo alcune iterazioni si ottengono soprattutto forme quadrate. Per creare una figura più interessante bisogna distinguere i diversi tipi di svolta.
                        Useremo:
-					   <br>
+					   <br><div class="formula">
                        + per girare a destra
 					   <br>
                        - per girare a sinistra
-					   <br><br>
+					   <br><br></div>
                        Introduciamo quindi due simboli:
-					   <br>
+					   <br><div class="formula">
                        F quando tra due segmenti c’è una svolta a sinistra
 					   <br>
                        G quando invece c’è una svolta a destra
-					   <br><br>
-                       Le regole diventano:<br>
+					   <br><br></div>
+                       Le regole diventano:<br><div class="formula">
 					   <b>F = F-G<br>
                        G = F+G<br><br></b>
-                       
+                       </div>
 					   
 					<b>
 
@@ -183,28 +188,29 @@
 					
 					Gli L-system possono essere usati anche per simulare la crescita delle piante. Infatti si possono creare foglie, cespugli e alberi sia in 2D che in 3D.
                     Per fare questo esistono altri due simboli molto utili, le parentesi quadrate:
-                     <br>
+                     <br><div class="formula">
                     [ serve per salvare la posizione e la direzione corrente
                      <br>
                     ] serve per tornare all’ultima posizione salvata
-                    <br><br>
+                    <br><br></div>
                     Questo permette di creare facilmente rami e ramificazioni.
                     <br>
 					Ad esempio:
-					<br>
+					<br><div class="formula">
 					F[+F][-F]F
-					<br><br>
+					<br><br></div>
                     Senza parentesi il disegno continuerebbe invece su una sola linea:
-					<br>
+					<br><div class="formula">
                     F+F++++++F++++F
-					<br><br>
-					Per creare una struttura simile a un albero possiamo partire da:<br>
+					<br><br></div>
+					Per creare una struttura simile a un albero possiamo partire da:
+					<br><div class="formula">
                     assioma: F<br>
-                    angolo: 22.5°<br><br>
-
-                    E usare questa regola:<br>
+                    angolo: 22.5°<br><br></div>
+ 
+                    E usare questa regola:<br><div class="formula">
                     F = F[-F]F[-F]+FF<br><br>
-                    
+                    </div>
 
 				</p>
 				<iframe scrolling=yes frameborder=0 height=500 src="assets\sketches\ESEMPIO3\index.html"></iframe>
@@ -212,15 +218,15 @@
 					
 					Dopo alcune iterazioni compare però un problema: alcune linee continuano a crescere formando una specie di spirale.<br>
                     Per evitare questo effetto introduciamo una nuova variabile:
-					<br>
+					<br><div class="formula">
                     F rappresenta i rami che continuano a dividersi
 					<br>
                     G rappresenta il tronco
-					<br><br>
+					<br><br></div>
                     La regola diventa quindi:
-					<br>
+					<br><div class="formula">
                     F = G[-F]G[-F]+GF
-					<br><br>
+					<br><br></div>
 
 				</p>
 				<iframe scrolling=yes frameborder=0 height=500 src="assets\sketches\ESEMPIO4\index.html"></iframe>
@@ -240,17 +246,17 @@
 					fino a formare la celebre figura geometrica a triangoli vuoti.
 					<br><br>
                     Per riprodurlo, definiamo i seguenti elementi:
-					<br>
+					<br><div class="formula">
                     assioma: F
 					<br>
                     angolo: 60°
-					<br><br>
+					<br><br></div>
                     Regole di sostituzione:
-					<br>
+					<br><div class="formula">
                     F= G-F-F
 					<br>
                     G= F+G+F
-                    <br><br>
+                    <br><br></div>
 				</p>
 				<iframe scrolling=yes frameborder=0 height=500 src="assets\sketches\ESEMPIO5\index.html"></iframe>
 			</div>
@@ -267,16 +273,16 @@
                     Per generarla con un L-system, introduciamo due simboli di controllo, A e B, che sono simboli "fantasma", 
 					ovvero non si vede nulla a schermo quando vengono letti, ma servono a decidere 
 					dove inserire i prossimi segmenti F nelle iterazioni successive.<br>
-                    <br>
+                    <br><div class="formula">
                     assioma: A
 					<br>
 					angolo: 90°
-					<br><br>
-                    Regole di sostituzione:<br>
+					<br><br></div>
+                    Regole di sostituzione:<br><div class="formula">
                     A = +BF-AFA-FB+
 					<br>
                     B = -AF+BFB+FA-
-					<br><br>
+					<br><br></div>
 
 				</p>
 				<iframe scrolling=yes frameborder=0 height=500 src="assets\sketches\ESEMPIO6\index.html"></iframe>
@@ -301,12 +307,12 @@
                  Introduciamo altri simboli: M, N, O, P: servono da vettori di movimento, 
 				 ognuna di queste lettere dice alla tartaruga di tracciare una linea in avanti 
 				 di lunghezza side (lunghezza in pixel di ogni segmento) e spostare la propria posizione.
-				 <br><br>
+				 <br><br><div class="formula">
                  assioma:[N]++[N]++[N]++[N]++[N]
 				 <br>
-				 angolo: 36° (valore ottenuto dividendo il cerchio in 10 parti, strettamente legato alle proporzioni della sezione aurea).
-				 <br><br>
-                 Regole di Sostituzione<br>
+				 angolo: 36°
+				 <br><br></div>
+                 Regole di Sostituzione:<br><div class="formula">
                  M= OA++PA----NA[-OA----MA]++
 				 <br>
                  N= +OA--PA[---MA--NA]+
@@ -314,13 +320,26 @@
                  O= -MA++NA[+++OA++PA]-
 				 <br>
                  P= --OA++++MA[+PA++++NA]--NA
-				 <br><br>
+				 <br><br></div>
 
 				</p>
 				<iframe scrolling=yes frameborder=0 height=500 src="assets\sketches\ESEMPIO7\index.html"></iframe>
 			</div>
 		</section>
 <!-- --------------------------------------------------------------------- -->
+
+
+		<section class="filetto" id="penrose">
+			<h4 class="titolo-sezione">Sperimentazioni</h4>
+			<div class="contenuto-sezione">
+				<p>
+				 
+				 <br><br>
+
+				</p>
+				<iframe scrolling=yes frameborder=0 height=500 src="assets\sketches\CUSTOMCROCEDIVINA1\index.html"></iframe>
+			</div>
+		</section>
 
 		<section class="filetto">
 			<h4 class="titolo-sezione">Bibliografia</h4>
@@ -338,6 +357,6 @@
 			</div>
 		</section>
 	</main>
-	 <a href="#introduzione" target="_self">go to introduction</a><br>
+	 <a href="#introduzione" target="_self" style="color: rgb(79, 104, 21);">Torna all'introduzione</a><br>
 </body>
 </html>

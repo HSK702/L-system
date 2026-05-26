@@ -23,7 +23,7 @@ iframe{
 
 }
 
-.testo-grassetto{
+.formula{
 	font-weight: bold !important;
 }
 
@@ -37,6 +37,11 @@ p {
 h1 {
 	margin: 0;
 	font-size: 5em;
+	color: rgb(79, 104, 21);
+}
+h2 {
+	margin: 0;
+	font-size: 1em;
 	color: rgb(79, 104, 21);
 }
 
