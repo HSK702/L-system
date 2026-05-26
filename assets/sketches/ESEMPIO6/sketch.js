@@ -74,9 +74,9 @@ function styleButton(btn) {
   btn.style('padding', '8px 16px');
   btn.style('font-size', '16px');
   btn.style('cursor', 'pointer');
-  btn.style('color', 'rgb(79, 104, 21)');
-  btn.style('background-color', 'rgb(240, 230, 218)');
-  btn.style('border', '1.5px solid rgb(79, 104, 21)');
+  btn.style('color', 'rgb(240, 230, 218)');
+  btn.style('background-color', 'rgb(79, 104, 21)');
+  btn.style('border', '1.5px solid rgb(240, 230, 218)');
   btn.style('border-radius', '10px'); 
   btn.style('text-transform', 'lowercase'); 
 }

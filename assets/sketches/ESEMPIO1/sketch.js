@@ -11,12 +11,21 @@ var inputRule1, inputRule2;
 var cronologiaDisplay;
 
 function setup() {
+  var container = createDiv();
+  container.style('display', 'flex');
+  container.style('gap', '30px');
+  container.style('align-items', 'flex-start');
+  var colonnaSinistra = createDiv();
+  colonnaSinistra.parent(container);
+
   var canvas = createCanvas(400, 400);
+  canvas.parent(colonnaSinistra);
   angleMode(DEGREES);
   canvas.style('border', '2px solid rgb(79, 104, 21)');
   canvas.style('border-radius', '20px');
   
   var gui = createDiv();
+  gui.parent(colonnaSinistra);
   gui.style('margin-top', '20px'); 
   gui.style('font-family', 'sans-serif');
   gui.style('color', 'rgb(79, 104, 21)');
@@ -64,11 +73,13 @@ function setup() {
   });
   inputRule2.parent(regoleGui);
   
+  // Colonna di destra (Solo per la cronologia delle stringhe)
   cronologiaDisplay = createDiv();
-  cronologiaDisplay.parent(gui);
-  cronologiaDisplay.style('margin-top', '15px');
+  cronologiaDisplay.parent(container);
   cronologiaDisplay.style('font-family', 'monospace');
   cronologiaDisplay.style('font-size', '14px');
+  cronologiaDisplay.style('color', 'rgb(79, 104, 21)');
+  cronologiaDisplay.style('max-width', '400px'); // Limita la larghezza per evitare che vada fuori schermo
   
   aggiungiStringaCronologia(count, sentence);
 
@@ -82,9 +93,9 @@ function styleButton(btn) {
   btn.style('padding', '8px 16px');
   btn.style('font-size', '16px');
   btn.style('cursor', 'pointer');
-  btn.style('color', 'rgb(79, 104, 21)');
-  btn.style('background-color', 'rgb(240, 230, 218)');
-  btn.style('border', '1.5px solid rgb(79, 104, 21)');
+  btn.style('color', 'rgb(240, 230, 218)');
+  btn.style('background-color', 'rgb(79, 104, 21)');
+  btn.style('border', '1.5px solid rgb(240, 230, 218)');
   btn.style('border-radius', '10px'); 
   btn.style('text-transform', 'lowercase'); 
 }

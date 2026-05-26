@@ -15,13 +15,13 @@ var container;
 function setup() {
   container = createDiv();
   container.style('position', 'relative');
-  container.style('width', '400px');
-  container.style('height', '400px');
+  container.style('width', '340px');
+  container.style('height', '340px');
   container.style('border', '2px solid rgb(79, 104, 21)');
   container.style('border-radius', '12px');
   container.style('overflow', 'hidden');
 
-  var canvas = createCanvas(400, 400);
+  var canvas = createCanvas(340, 340);
   canvas.parent(container);
   angleMode(DEGREES);
   
@@ -93,8 +93,8 @@ function styleButton(btn) {
   btn.style('padding', '8px 16px');
   btn.style('font-size', '16px');
   btn.style('cursor', 'pointer');
-  btn.style('background-color', 'rgb(240, 230, 218)');
-  btn.style('color', 'rgb(79, 104, 21)');
+  btn.style('background-color', 'rgb(79, 104, 21)');
+  btn.style('color', 'rgb(240, 230, 218)');
   btn.style('border', '1.5px solid rgb(79, 104, 21)');
   btn.style('border-radius', '10px');
   btn.style('text-transform', 'lowercase');
