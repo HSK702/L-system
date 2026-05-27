@@ -216,7 +216,7 @@
 			</div>
 		</section>
 
-<!-- --------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------->
 
 		<section class="filetto" id="triangolo-sierpinski">
 			<h4 class="titolo-sezione">Il Triangolo Sierpinski</h4>
@@ -224,7 +224,8 @@
 				<p>
 					
 					Un altro frattale classico che può essere generato facilmente attraverso un L-System è il Triangolo di Sierpinski. <br>
-					Sebbene esistano diversi modi per disegnarlo (anche attraverso la scomposizione geometrica diretta), 
+					Sebbene esistano diversi modi per disegnarlo <br>
+					(anche attraverso la scomposizione geometrica diretta),<br> 
 					l'approccio con i sistemi di Lindenmayer si basa sulla creazione di una linea continua che si ripiega su se stessa 
 					fino a formare la celebre figura geometrica a triangoli vuoti.
 					<br><br>
@@ -236,22 +237,22 @@
 					<br><br></div>
                     Regole di sostituzione:
 					<br><div class="formula">
-                    F= G-F-F
+                    F = G-F-F
 					<br>
-                    G= F+G+F
+                    G = F+G+F
                     <br><br></div>
 				</p>
 				<iframe scrolling=yes frameborder=0 height=500 src="assets\sketches\ESEMPIO5\index.html"></iframe>
 			</div>
 		</section>
-<!-- --------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------->
 
 		<section class="filetto" id="curva-hilbert">
 			<h4 class="titolo-sezione">Curva di Hilbert</h4>
 			<div class="contenuto-sezione">
 				<p>
 					
-				    La Curva di Hilbert è una curva frattale "salva-spazio" (space-filling curve): una linea continua che allontanandosi verso l'infinito 
+				    La Curva di Hilbert è una curva frattale "riempi-spazio" (space-filling curve): una linea continua che allontanandosi verso l'infinito 
 					con l'aumentare delle iterazioni, riesce a riempire completamente una superficie bidimensionale senza mai incrociare se stessa.<br>
                     Per generarla con un L-System, introduciamo due simboli di controllo, A e B, che sono simboli "fantasma", 
 					ovvero non si vede nulla a schermo quando vengono letti, ma servono a decidere 
@@ -279,30 +280,33 @@
 				<p>
 					
 				 La Tassellatura di Penrose rappresenta uno degli esempi più complessi di applicazione degli
-				 L-System. Creata da Roger Penrose, matematico e fisico britannico, è una struttura geometrica 
-				 in grado di ricoprire una superficie infinita creando motivi simmetrici sempre diversi,
-				 in natura questo fenomeno si ritrova nei quasicristalli.
-				 <br>
-                 Per riprodurre fedelmente questo nel codice, l'L-System utilizza un insieme di simboli interconnessi 
-				 che agiscono contemporaneamente
-				 sia come variabili di calcolo sia come vettori di spostamento. 
+                 L-Systems.<br> 
+				 Creata da Roger Penrose, matematico e fisico britannico, è una struttura geometrica 
+                 in grado di ricoprire una superficie infinita creando motivi simmetrici sempre diversi,
+                 in natura questo fenomeno si ritrova nei quasicristalli <br>
+				 (strutture cristalline con simmetria non periodica).
 				 <br><br>
-                 Introduciamo altri simboli: M, N, O, P: servono da vettori di movimento, 
-				 ognuna di queste lettere dice alla tartaruga di tracciare una linea in avanti 
-				 di lunghezza side (lunghezza in pixel di ogni segmento) e spostare la propria posizione.
+                 Esistono diversi insiemi di tasselli di penrose,<br> 
+				 nessuna dei quali utilizza parallelogrammi come tasselli,<br>
+                 il caso più comune è composto da solo due tasselli<br>
+                 entrambi legati alla sezione aurea. 
+				 <br><br>
+                 Per poter riprodurre ciò introdurremo delle nuove variabili: P,O,M,N, 
+                 che serviranno da vettori di movimento per tracciare linee
+                 della lunghezza in px di ogni segmento e spostare la propria posizione.
 				 <br><br><div class="formula">
                  assioma: [N]++[N]++[N]++[N]++[N]
 				 <br>
 				 angolo: 36°
 				 <br><br></div>
                  Regole di Sostituzione:<br><div class="formula">
-                 M= OA++PA----NA[-OA----MA]++
+                 M = OA++PA----NA[-OA----MA]++
 				 <br>
-                 N= +OA--PA[---MA--NA]+
+                 N = +OA--PA[---MA--NA]+
 				 <br>
-                 O= -MA++NA[+++OA++PA]-
+                 O = -MA++NA[+++OA++PA]-
 				 <br>
-                 P= --OA++++MA[+PA++++NA]--NA
+                 P = --OA++++MA[+PA++++NA]--NA
 				 <br><br></div>
 
 				</p>
@@ -328,7 +332,7 @@
 		</section>
 
 		<section class="filetto">
-			<h4 class="titolo-sezione">Bibliografia</h4>
+			<h4 class="titolo-sezione">Sitografia</h4>
 			<div class="contenuto-sezione">
 				<ul>
 				
@@ -341,8 +345,8 @@
 					<br>
 					Altri progetti sugli L-Systems fatti in ISIAU:
 					<br><br>
-					<a href= "https://swathore.github.io/L-SYSTEMS/" target="_blank" style="color: rgb(79, 104, 21);">  Introduzione agli L-Systems Viola Shillito e Asia Torreggiani(GitHub)</a><br>
-					<a href= "https://chiaranaldi.github.io/L-Systems/" target="_blank" style="color: rgb(79, 104, 21);">  L-Systems Lavinia Camoletti e Chiara Naldi(GitHub)</a><br>
+					<a href= "https://swathore.github.io/L-SYSTEMS/" target="_blank" style="color: rgb(79, 104, 21);">  Introduzione agli L-Systems Viola Shillito e Asia Torreggiani (GitHub)</a><br>
+					<a href= "https://chiaranaldi.github.io/L-Systems/" target="_blank" style="color: rgb(79, 104, 21);">  L-Systems Lavinia Camoletti e Chiara Naldi (GitHub)</a><br>
 				</ul>
 
 			</div>
