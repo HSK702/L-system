@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>L-system</title>
+	<title>L-Systems</title>
 	<meta name="author"      content="Nome Cognome">
 	<meta name="description" content="Descrizione">
 	<meta name="viewport"    content="width=device-width, initial-scale=1">
@@ -29,7 +29,7 @@
 
 		<header>
 			<span></span>
-			<h1>Lindenmayer system</h1>
+			<h1>Lindenmayer System</h1>
 		</header>
 
 		<!------------------------------------------------------------------------->
@@ -40,13 +40,13 @@
 				<p>
 					
 					
-	               L-system, o sistema di Lindenmayer, è un modello matematico creato nel 1968 dal biologo ungherese Aristid Lindenmayer 
+	               L-System, o sistema di Lindenmayer, è un modello matematico creato nel 1968 dal biologo ungherese Aristid Lindenmayer 
 				   per studiare la crescita di piante e organismi viventi. <br>
                    Questo sistema funziona attraverso simboli e regole che vengono applicate più volte 
 				   a una sequenza iniziale, generando strutture sempre più complesse.<br>
-				   La particolarità degli L-system è che tutti i simboli vengono trasformati contemporaneamente, 
+				   La particolarità degli L-System è che tutti i simboli vengono trasformati contemporaneamente, 
 				   in modo simile a ciò che avviene nella crescita naturale delle cellule.<br>
-                   Nel tempo gli L-system sono stati utilizzati anche nella grafica computerizzata e nella matematica 
+                   Nel tempo gli L-System sono stati utilizzati anche nella grafica computerizzata e nella matematica 
 				   per creare alberi, piante e figure frattali, 
 				   dimostrando come da regole semplici possano nascere forme molto elaborate.<br>
 
@@ -59,15 +59,15 @@
 		<!------------------------------------------------------------------------->
 
 		<section class="filetto" id="funzionamento">
-			<h4 class="titolo-sezione">Funzionamento <br> degli L-system</h4>
+			<h4 class="titolo-sezione">Funzionamento <br> degli L-System</h4>
 			<div class="contenuto-sezione">
 				<p>
 					
-				 Per disegnare qualcosa con un L-system bisogna prima decidere cosa rappresentano i simboli. 
+				 Per disegnare qualcosa con un L-System bisogna prima decidere cosa rappresentano i simboli. 
 				 Ogni simbolo può avere il significato che vogliamo: ad esempio la lettera F può indicare una linea in avanti, 
 				 mentre altri simboli possono servire per creare curve o rotazioni.
                  <br><br>
-                 Un esempio comune di simboli è il seguente :
+                Introduciamo i simboli:
                  <br>
                  <div class="formula"> F e G servono per disegnare in avanti
 				    <br>
@@ -76,7 +76,8 @@
                     - indica una rotazione verso sinistra 
 				 </div>
 				 <br>
-				 Per far funzionare il sistema bisogna anche scegliere un angolo di rotazione. 
+				 Per far funzionare il sistema bisogna anche scegliere un angolo di rotazione.
+				 <br>
 				 In questo caso utilizziamo 60°.
                  <br><br>
                  Alcuni esempi:<br>
@@ -87,8 +88,10 @@
                    F-F = disegna una linea, gira a sinistra e continua
 				 </div>
                  <br>
-                 Con pochi simboli si possono creare molte forme diverse. Però, per ottenere disegni più complessi, 
-				 si usano delle regole che trasformano i simboli iniziali in sequenze sempre più lunghe.
+                 Con pochi simboli si possono creare molte forme diverse. <br>
+				 Però, per ottenere disegni più complessi, 
+				 si usano delle regole che trasformano<br>
+				  i simboli iniziali in sequenze sempre più lunghe.
 				 <br><br>
                  Per esempio:
                  <br>
@@ -97,7 +100,10 @@
                  G = -GG
 				 <br><br>
 				</div>
-                 Ogni volta che viene applicata una regola, tutti i simboli della stringa vengono sostituiti contemporaneamente.
+                 Ogni volta che viene applicata una regola, tutti i simboli della stringa vengono
+				 <br>
+				 sostituiti contemporaneamente.
+				 <br>
                  La stringa iniziale si chiama assioma ed è il punto di partenza del sistema.
 				 <br><br>
                  Esempio:
@@ -128,37 +134,11 @@
 			<div class="contenuto-sezione">
 				<p>
 					
-					Uno degli esempi più conosciuti creati con gli L-system è la curva del drago.
+					Uno degli esempi più conosciuti creati con gli L-System è la curva del drago.
+					<br>
                     L’idea di base è sostituire una linea con due segmenti che formano un angolo retto.
 					<br><br>
-                    Possiamo partire da una regola semplice:
-					<br><div class="formula">
-					   F = F+F
-					   <br><br></div>
-                       Partendo dall’assioma F otteniamo:
-					   <br><div class="formula">
-                       #0 = F
-					   <br>
-                       #1 = F+F
-					   <br>
-                       #2 = F+F+F+F
-					   <br>
-                       #3 = F+F+F+F+F+F+F+F
-					   <br><br></div>
-					   Con questa regola, però, dopo alcune iterazioni si ottengono soprattutto forme quadrate. Per creare una figura più interessante bisogna distinguere i diversi tipi di svolta.
-                       Useremo:
-					   <br><div class="formula">
-                       + per girare a destra
-					   <br>
-                       - per girare a sinistra
-					   <br><br></div>
-                       Introduciamo quindi due simboli:
-					   <br><div class="formula">
-                       F quando tra due segmenti c’è una svolta a sinistra
-					   <br>
-                       G quando invece c’è una svolta a destra
-					   <br><br></div>
-                       Le regole diventano:<br><div class="formula">
+                       Le regole da seguire per formare questa figura sono:<br><div class="formula">
 					   <b>F = F-G<br>
                        G = F+G<br><br></b>
                        </div>
@@ -186,7 +166,9 @@
 			<div class="contenuto-sezione">
 				<p>
 					
-					Gli L-system possono essere usati anche per simulare la crescita delle piante. Infatti si possono creare foglie, cespugli e alberi sia in 2D che in 3D.
+					Gli L-Systems possono essere usati anche per simulare la crescita delle piante.
+					<br>
+					 Infatti si possono creare foglie, cespugli e alberi sia in 2D che in 3D.
                     Per fare questo esistono altri due simboli molto utili, le parentesi quadrate:
                      <br><div class="formula">
                     [ serve per salvare la posizione e la direzione corrente
@@ -225,7 +207,8 @@
 					<br><br></div>
                     La regola diventa quindi:
 					<br><div class="formula">
-                    F = G[-F]G[-F]+GF
+                    F = G[-F]G[-F]+GF<br>
+					G = GG
 					<br><br></div>
 
 				</p>
@@ -240,7 +223,7 @@
 			<div class="contenuto-sezione">
 				<p>
 					
-					Un altro frattale classico che può essere generato facilmente attraverso un L-system è il Triangolo di Sierpinski. <br>
+					Un altro frattale classico che può essere generato facilmente attraverso un L-System è il Triangolo di Sierpinski. <br>
 					Sebbene esistano diversi modi per disegnarlo (anche attraverso la scomposizione geometrica diretta), 
 					l'approccio con i sistemi di Lindenmayer si basa sulla creazione di una linea continua che si ripiega su se stessa 
 					fino a formare la celebre figura geometrica a triangoli vuoti.
@@ -270,7 +253,7 @@
 					
 				    La Curva di Hilbert è una curva frattale "salva-spazio" (space-filling curve): una linea continua che allontanandosi verso l'infinito 
 					con l'aumentare delle iterazioni, riesce a riempire completamente una superficie bidimensionale senza mai incrociare se stessa.<br>
-                    Per generarla con un L-system, introduciamo due simboli di controllo, A e B, che sono simboli "fantasma", 
+                    Per generarla con un L-System, introduciamo due simboli di controllo, A e B, che sono simboli "fantasma", 
 					ovvero non si vede nulla a schermo quando vengono letti, ma servono a decidere 
 					dove inserire i prossimi segmenti F nelle iterazioni successive.<br>
                     <br><div class="formula">
@@ -296,11 +279,11 @@
 				<p>
 					
 				 La Tassellatura di Penrose rappresenta uno degli esempi più complessi di applicazione degli
-				 L-system. Creata da Roger Penrose, matematico e fisico britannico, è una struttura geometrica 
+				 L-System. Creata da Roger Penrose, matematico e fisico britannico, è una struttura geometrica 
 				 in grado di ricoprire una superficie infinita creando motivi simmetrici sempre diversi,
 				 in natura questo fenomeno si ritrova nei quasicristalli.
 				 <br>
-                 Per riprodurre fedelmente questo nel codice, l'L-system utilizza un insieme di simboli interconnessi 
+                 Per riprodurre fedelmente questo nel codice, l'L-System utilizza un insieme di simboli interconnessi 
 				 che agiscono contemporaneamente
 				 sia come variabili di calcolo sia come vettori di spostamento. 
 				 <br><br>
@@ -308,7 +291,7 @@
 				 ognuna di queste lettere dice alla tartaruga di tracciare una linea in avanti 
 				 di lunghezza side (lunghezza in pixel di ogni segmento) e spostare la propria posizione.
 				 <br><br><div class="formula">
-                 assioma:[N]++[N]++[N]++[N]++[N]
+                 assioma: [N]++[N]++[N]++[N]++[N]
 				 <br>
 				 angolo: 36°
 				 <br><br></div>
@@ -323,7 +306,8 @@
 				 <br><br></div>
 
 				</p>
-				<iframe scrolling=yes frameborder=0 height=500 src="assets\sketches\ESEMPIO7\index.html"></iframe>
+				<iframe scrolling=yes frameborder=0 height=1200 src="assets\sketches\ESEMPIO7\index.html"></iframe>
+				<br><br><br>
 			</div>
 		</section>
 <!-- --------------------------------------------------------------------- -->
@@ -337,8 +321,8 @@
 				 <br><br>
 
 				</p>
-				<iframe scrolling=no frameborder=0 height=500 src="assets\sketches\CUSTOMCROCEDIVINA1\index.html"></iframe>
-				<br><br>
+				<iframe class="franco" scrolling=yes frameborder=0 height=500 src="assets\sketches\CUSTOMCROCEDIVINA1\index.html"></iframe>
+				<br>
 				
 			</div>
 		</section>
@@ -353,7 +337,12 @@
 					<a href="https://www.geeksforgeeks.org/python/heighways-dragon-curve-python/" target="_blank">Dragon Curve (GeeksForGeeks)</a><br>
 					<a href="https://thecodingtrain.com/challenges/16-l-system-fractal-trees" target="_blank">L-System Fractal Trees ThecodingTrain (YouTube) </a><br>
 					<a href="https://en.wikipedia.org/wiki/L-system" target="_blank">L-system (Wikipedia)</a><br>
-					<a href="https://www.cgjennings.ca/articles/l-systems/" target="_blank">L-systems Christopher G. Jennings (Cgjennings)</a><br>
+					<a href="https://www.cgjennings.ca/articles/l-systems/" target="_blank">L-Systems Christopher G. Jennings (Cgjennings)</a><br>
+					<br>
+					Altri progetti sugli L-Systems fatti in ISIAU:
+					<br><br>
+					<a href= "https://swathore.github.io/L-SYSTEMS/" target="_blank" style="color: rgb(79, 104, 21);">  Introduzione agli L-Systems Viola Shillito e Asia Torreggiani(GitHub)</a><br>
+					<a href= "https://chiaranaldi.github.io/L-Systems/" target="_blank" style="color: rgb(79, 104, 21);">  L-Systems Lavinia Camoletti e Chiara Naldi(GitHub)</a><br>
 				</ul>
 
 			</div>
@@ -367,8 +356,9 @@
 				<p>
 				Melanie Bonivento, Andrea Bedini <br>
 				ISIAU 2025-2026	<br>
-				Matematica per il design<br>
+				<a href= "https://github.com/made-isia/2026#gruppi-di-lavoro-e-progetti" target="_blank" style="color: rgb(79, 104, 21);"> Matematica per il design (GitHub)</a>
 				
+				<br>
 
 				</p>
 				

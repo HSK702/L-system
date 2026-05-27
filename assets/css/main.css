@@ -75,9 +75,13 @@ section {
 
 .contenitore {
 	/* max-width: 54em; */
-    
 
 }
+
+.franco{
+	height: 850px;
+}
+
 
 ul {
 	margin: 0;

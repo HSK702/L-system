@@ -10,105 +10,140 @@ var rules = {
   "P": "--OA++++MA[+PA++++NA]--NA"
 };
 
-var container;
+var inputM, inputN, inputO, inputP;
 
 function setup() {
-  container = createDiv();
-  container.style('position', 'relative');
-  container.style('width', '340px');
-  container.style('height', '340px');
-  container.style('border', '2px solid rgb(79, 104, 21)');
-  container.style('border-radius', '12px');
-  container.style('overflow', 'hidden');
-
-  var canvas = createCanvas(340, 340);
-  canvas.parent(container);
+  var canvas = createCanvas(400, 400);
   angleMode(DEGREES);
+  canvas.style('border', '2px solid rgb(79, 104, 21)');
+  canvas.style('border-radius', '20px');
   
   side = 20;
 
   var gui = createDiv();
-  gui.style('margin-top', '20px');
+  gui.style('margin-top', '20px'); 
   gui.style('font-family', 'sans-serif');
   gui.style('color', 'rgb(79, 104, 21)');
 
+  var bottoniGui = createDiv();
+  bottoniGui.parent(gui);
+
   var btnGen = createButton("genera");
-  btnGen.parent(gui);
+  btnGen.parent(bottoniGui);
   btnGen.mousePressed(generate);
   styleButton(btnGen);
 
   var btnReset = createButton("reset");
-  btnReset.parent(gui);
+  btnReset.parent(bottoniGui);
   btnReset.style('margin-left', '10px');
   btnReset.mousePressed(resetCanvas);
   styleButton(btnReset);
   
-  var rulesContainer = createDiv();
-  rulesContainer.parent(gui);
-  rulesContainer.style('margin-top', '15px');
-  rulesContainer.style('display', 'flex');
-  rulesContainer.style('flex-direction', 'column');
-  rulesContainer.style('gap', '8px');
+  var regoleGui = createDiv();
+  regoleGui.parent(gui);
+  regoleGui.style('margin-top', '15px'); 
+  regoleGui.style('font-weight', 'bold');
+  regoleGui.style('display', 'flex');
+  regoleGui.style('align-items', 'center');
+  regoleGui.style('gap', '5px');
 
-  createRuleInput("M → ", rules["M"], rulesContainer, function() { rules["M"] = this.value(); });
-  createRuleInput("N → ", rules["N"], rulesContainer, function() { rules["N"] = this.value(); });
-  createRuleInput("O → ", rules["O"], rulesContainer, function() { rules["O"] = this.value(); });
-  createRuleInput("P → ", rules["P"], rulesContainer, function() { rules["P"] = this.value(); });
-
-  disegnaPenrose();
-}
-
-function createRuleInput(labelText, defaultValue, parentContainer, inputEvent) {
-  var row = createDiv();
-  row.parent(parentContainer);
-  row.style('display', 'flex');
-  row.style('align-items', 'center');
-  row.style('gap', '8px');
-
-  var label = createSpan(labelText);
-  label.parent(row);
-  label.style('font-weight', 'bold');
-  label.style('font-size', '14px');
-  label.style('min-width', '35px'); // Ridotto per adattarsi alla sola lettera con freccia
-  
-  var inp = createInput(defaultValue);
-  inp.parent(row);
-  inp.input(inputEvent);
-  inp.input(function() {
-    this.style('width', Math.max(100, this.value().length * 8) + 'px');
+  regoleGui.child(createSpan("M → "));
+  inputM = createInput(rules["M"]);
+  styleInput(inputM);
+  inputM.input(function() {
+    rules["M"] = this.value();
+    aggiornaLarghezzaInput(this);
   });
+  inputM.parent(regoleGui);
+
+  var spazio1 = createSpan("&nbsp;&nbsp;&nbsp;");
+  spazio1.parent(regoleGui);
+
+  regoleGui.child(createSpan("N → "));
+  inputN = createInput(rules["N"]);
+  styleInput(inputN);
+  inputN.input(function() {
+    rules["N"] = this.value();
+    aggiornaLarghezzaInput(this);
+  });
+  inputN.parent(regoleGui);
+
+  var spazio2 = createSpan("&nbsp;&nbsp;&nbsp;");
+  spazio2.parent(regoleGui);
+
+  regoleGui.child(createSpan("O → "));
+  inputO = createInput(rules["O"]);
+  styleInput(inputO);
+  inputO.input(function() {
+    rules["O"] = this.value();
+    aggiornaLarghezzaInput(this);
+  });
+  inputO.parent(regoleGui);
+
+  var spazio3 = createSpan("&nbsp;&nbsp;&nbsp;");
+  spazio3.parent(regoleGui);
+
+  regoleGui.child(createSpan("P → "));
+  inputP = createInput(rules["P"]);
+  styleInput(inputP);
+  inputP.input(function() {
+    rules["P"] = this.value();
+    aggiornaLarghezzaInput(this);
+  });
+  inputP.parent(regoleGui);
   
-  inp.style('padding', '6px');
-  inp.style('border', '1px solid rgb(79, 104, 21)');
-  inp.style('border-radius', '6px');
-  inp.style('background-color', 'rgb(240, 230, 218)');
-  inp.style('color', 'rgb(79, 104, 21)');
-  inp.style('font-family', 'monospace');
-  inp.style('font-size', '13px');
+  aggiornaLarghezzaInput(inputM);
+  aggiornaLarghezzaInput(inputN);
+  aggiornaLarghezzaInput(inputO);
+  aggiornaLarghezzaInput(inputP);
   
-  inp.style('width', Math.max(100, defaultValue.length * 8) + 'px');
+  disegnaPenrose();
 }
 
 function styleButton(btn) {
   btn.style('padding', '8px 16px');
   btn.style('font-size', '16px');
   btn.style('cursor', 'pointer');
-  btn.style('background-color', 'rgb(79, 104, 21)');
   btn.style('color', 'rgb(240, 230, 218)');
-  btn.style('border', '1.5px solid rgb(79, 104, 21)');
-  btn.style('border-radius', '10px');
-  btn.style('text-transform', 'lowercase');
+  btn.style('background-color', 'rgb(79, 104, 21)');
+  btn.style('border', '1.5px solid rgb(240, 230, 218)');
+  btn.style('border-radius', '10px'); 
+  btn.style('text-transform', 'lowercase'); 
+}
+
+function styleInput(inp) {
+  inp.style('padding', '6px 10px');
+  inp.style('font-size', '14px');
+  inp.style('color', 'rgb(79, 104, 21)');
+  inp.style('background-color', 'rgb(240, 230, 218)');
+  inp.style('border', '1px solid rgb(79, 104, 21)');
+  inp.style('border-radius', '6px'); 
+  inp.style('font-family', 'monospace');
+}
+
+function aggiornaLarghezzaInput(elemento) {
+  elemento.style('width', Math.max(60, elemento.value().length * 8) + 'px');
 }
 
 function resetCanvas() {
+  rules["M"] = inputM.value();
+  rules["N"] = inputN.value();
+  rules["O"] = inputO.value();
+  rules["P"] = inputP.value();
+  
   sentence = axiom;
-  count = 0;
   side = 20;
+  count = 0;
   disegnaPenrose();
 }
 
 function generate() {
   if (count >= 5) return; 
+  
+  rules["M"] = inputM.value();
+  rules["N"] = inputN.value();
+  rules["O"] = inputO.value();
+  rules["P"] = inputP.value();
   
   count++;
 

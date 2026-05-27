@@ -2,6 +2,7 @@ var axiom = "F+F+F+F";
 var sentence = axiom;
 var count = 0;
 var side;
+var angolo = 90; 
 
 var rules = {
   "F": "F+F+F-F-F+F+F-F-F+F+F-F-F+F+F-F-F+F-F+F-F+F-F+F-F"
@@ -13,6 +14,7 @@ var rightContainer;
 
 var inputAxiom;
 var inputRuleF;
+var inputAngolo; 
 
 var colSfondo = '#f0e6da'; 
 var colTratto  = '#4f6815'; 
@@ -60,21 +62,29 @@ function setup() {
   btnReset.mousePressed(resetCanvas);
   styleButton(btnReset);
   
-  var rulesContainer = createDiv();
-  rulesContainer.parent(gui);
-  rulesContainer.style('margin-top', '15px');
-  rulesContainer.style('display', 'flex');
-  rulesContainer.style('flex-direction', 'column');
-  rulesContainer.style('gap', '8px');
+  var regoleGui = createDiv();
+  regoleGui.parent(gui);
+  regoleGui.style('margin-top', '15px');
+  regoleGui.style('display', 'flex');
+  regoleGui.style('flex-direction', 'column');
+  regoleGui.style('gap', '8px');
 
-  inputAxiom = createRuleInput("Assioma: ", axiom, rulesContainer, function(val) { 
+  inputAxiom = createRuleInput("assioma  ﹥", axiom, regoleGui, function(val) { 
     axiom = val.toUpperCase(); 
     resetCanvas(); 
   });
 
-  inputRuleF = createRuleInput("F → ", rules["F"], rulesContainer, function(val) { 
+  inputRuleF = createRuleInput("F  ﹥", rules["F"], regoleGui, function(val) { 
     rules["F"] = val.toUpperCase(); 
     resetCanvas(); 
+  });
+
+  inputAngolo = createRuleInput("angolo  ﹥", angolo.toString(), regoleGui, function(val) {
+    var num = parseFloat(val);
+    if (!isNaN(num)) {
+      angolo = num;
+      resetCanvas();
+    }
   });
 
   rightContainer = createDiv();
@@ -93,16 +103,16 @@ function setup() {
   titoloEsempio.style('text-transform', 'lowercase');
   titoloEsempio.style('margin-bottom', '-5px');
 
-  creaBoxEsempio("1", "F+F+F+F", "F+F+F-F-F+F+F-F-F+F+F-F-F+F+F-F-F+F-F+F-F+F-F+F-F");
-  creaBoxEsempio("2", "F+F+FF-FF+FF-FF+F+F+FF-FF+FF-FF", "F---F+++F-F+F");
-  creaBoxEsempio("3", "F+F+F+F", "F+F+F-F-F+F+F+F-F+F-F+F-F");
-  creaBoxEsempio("4", "F+F-F+F-F+F", "F---F+++F-F+F");
-  creaBoxEsempio("5", "F+F+F+F", "F---F+++F-F+F");
+  creaBoxEsempio("1", "F+F+F+F", "F+F+F-F-F+F+F-F-F+F+F-F-F+F+F-F-F+F-F+F-F+F-F+F-F", 90);
+  creaBoxEsempio("2", "F+F+FF-FF+FF-FF+F+F+FF-FF+FF-FF", "F---F+++F-F+F", 90);
+  creaBoxEsempio("3", "F+F+F+F", "F+F+F-F-F+F+F+F-F+F-F+F-F", 90);
+  creaBoxEsempio("4", "F+F-F+F-F+F", "F---F+++F-F+F", 90);
+  creaBoxEsempio("5", "F+F+F+F", "F---F+++F-F+F", 90);
 
   disegnaGeometria();
 }
 
-function creaBoxEsempio(numero, esAxiom, esRule) {
+function creaBoxEsempio(numero, esAxiom, esRule, esAngolo) {
   var box = createDiv();
   box.parent(rightContainer);
   box.style('background-color', colSfondo);
@@ -110,7 +120,7 @@ function creaBoxEsempio(numero, esAxiom, esRule) {
   box.style('border-radius', '12px');
   box.style('border', '1.5px solid ' + colTratto);
   box.style('font-family', 'monospace');
-  box.style('font-size', '13px');
+  box.style('font-size', '14px');
   box.style('word-break', 'break-all');
   box.style('position', 'relative');
 
@@ -125,7 +135,11 @@ function creaBoxEsempio(numero, esAxiom, esRule) {
 
   var rigaRegola = createDiv("regola → " + esRule);
   rigaRegola.parent(box);
-  rigaRegola.style('margin-bottom', '10px');
+  rigaRegola.style('margin-bottom', '4px'); 
+
+  var rigaAngolo = createDiv("angolo → " + esAngolo + "°");
+  rigaAngolo.parent(box);
+  rigaAngolo.style('margin-bottom', '10px');
 
   var btnApplica = createButton("applica");
   btnApplica.parent(box);
@@ -134,12 +148,16 @@ function creaBoxEsempio(numero, esAxiom, esRule) {
   btnApplica.mousePressed(function() {
     axiom = esAxiom;
     rules["F"] = esRule;
+    angolo = esAngolo;
     
     inputAxiom.value(esAxiom);
-    inputAxiom.style('width', Math.max(100, esAxiom.length * 8) + 'px');
+    aggiornaLarghezzaInput(inputAxiom);
     
     inputRuleF.value(esRule);
-    inputRuleF.style('width', Math.max(100, esRule.length * 8) + 'px');
+    aggiornaLarghezzaInput(inputRuleF);
+
+    inputAngolo.value(esAngolo.toString());
+    aggiornaLarghezzaInput(inputAngolo);
     
     resetCanvas();
   });
@@ -150,33 +168,26 @@ function createRuleInput(labelText, defaultValue, parentContainer, callbackAzion
   row.parent(parentContainer);
   row.style('display', 'flex');
   row.style('align-items', 'center');
-  row.style('gap', '8px');
+  row.style('gap', '5px');
 
   var label = createSpan(labelText);
   label.parent(row);
   label.style('font-weight', 'bold');
   label.style('font-size', '14px');
-  label.style('min-width', '70px'); 
-  label.style('font-family', 'monospace');
+  label.style('min-width', '75px'); 
+  label.style('font-family', 'sans-serif');
   
   var inp = createInput(defaultValue);
   inp.parent(row);
+  styleInput(inp);
   
   inp.elt.oninput = function() {
     var txt = this.value;
-    inp.style('width', Math.max(100, txt.length * 8) + 'px');
+    aggiornaLarghezzaInput(inp);
     callbackAzione(txt);
   };
   
-  inp.style('padding', '6px');
-  inp.style('border', '1.5px solid ' + colTratto); 
-  inp.style('border-radius', '6px');
-  inp.style('background-color', colSfondo); 
-  inp.style('color', colTratto);            
-  inp.style('font-family', 'monospace'); 
-  inp.style('font-size', '13px');
-  inp.style('width', Math.max(100, defaultValue.length * 8) + 'px');
-  
+  aggiornaLarghezzaInput(inp);
   return inp;
 }
 
@@ -184,31 +195,37 @@ function styleButton(btn) {
   btn.style('padding', '8px 16px');
   btn.style('font-size', '16px');
   btn.style('cursor', 'pointer');
+  btn.style('color', 'rgb(240, 230, 218)');
   btn.style('background-color', colTratto); 
-  btn.style('color', colSfondo);             
-  btn.style('border', 'none');
+  btn.style('border', '1.5px solid rgb(240, 230, 218)');
   btn.style('border-radius', '10px');        
   btn.style('text-transform', 'lowercase'); 
-  btn.style('font-weight', '500');
-  
-  btn.mouseOver(function() { btn.style('opacity', '0.9'); });
-  btn.mouseOut(function() { btn.style('opacity', '1.0'); });
 }
 
 function styleButtonPiccolo(btn) {
   btn.style('padding', '4px 10px');
-  btn.style('font-size', '11px');
+  btn.style('font-size', '12px');
   btn.style('cursor', 'pointer');
+  btn.style('color', 'rgb(240, 230, 218)');
   btn.style('background-color', colTratto); 
-  btn.style('color', colSfondo);             
-  btn.style('border', 'none');
+  btn.style('border', '1.5px solid rgb(240, 230, 218)');
   btn.style('border-radius', '6px');        
   btn.style('text-transform', 'lowercase'); 
-  btn.style('font-weight', 'bold');
   btn.style('font-family', 'sans-serif');
-  
-  btn.mouseOver(function() { btn.style('opacity', '0.85'); });
-  btn.mouseOut(function() { btn.style('opacity', '1.0'); });
+}
+
+function styleInput(inp) {
+  inp.style('padding', '6px 10px');
+  inp.style('font-size', '14px');
+  inp.style('color', colTratto);
+  inp.style('background-color', colSfondo); 
+  inp.style('border', '1px solid ' + colTratto); 
+  inp.style('border-radius', '6px');
+  inp.style('font-family', 'monospace'); 
+}
+
+function aggiornaLarghezzaInput(elemento) {
+  elemento.style('width', Math.max(60, elemento.value().length * 8) + 'px');
 }
 
 function resetCanvas() {
@@ -239,7 +256,8 @@ function disegnaGeometria() {
   strokeWeight(2.5);
   noFill();
 
-  var posX = 0, posY = 0, angle = 0;
+  var currentAngle = 0; 
+  var posX = 0, posY = 0;
   var stack = [];
   var minX = 0, maxX = 0, minY = 0, maxY = 0;
 
@@ -247,23 +265,23 @@ function disegnaGeometria() {
     var current = sentence.charAt(i);
     
     if (current === "F" || current === "A" || current === "B") {
-      posX += side * cos(angle);
-      posY += side * sin(angle);
+      posX += side * cos(currentAngle);
+      posY += side * sin(currentAngle);
       if (posX < minX) minX = posX;
       if (posX > maxX) maxX = posX;
       if (posY < minY) minY = posY;
       if (posY > maxY) maxY = posY;
     } else if (current === "+") {
-      angle += 90; 
+      currentAngle += angolo; 
     } else if (current === "-") {
-      angle -= 90; 
+      currentAngle -= angolo; 
     } else if (current === "[") {
-      stack.push({x: posX, y: posY, a: angle});
+      stack.push({x: posX, y: posY, a: currentAngle});
     } else if (current === "]") {
       var state = stack.pop();
       posX = state.x;
       posY = state.y;
-      angle = state.a;
+      currentAngle = state.a;
     }
   }
 
@@ -296,9 +314,9 @@ function disegnaGeometria() {
       line(0, 0, side, 0);
       translate(side, 0);
     } else if (current === "+") {
-      rotate(90); 
+      rotate(angolo); 
     } else if (current === "-") {
-      rotate(-90); 
+      rotate(-angolo); 
     } else if (current === "[") {
       push();
     } else if (current === "]") {
